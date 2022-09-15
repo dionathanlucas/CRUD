@@ -1,0 +1,62 @@
+* {
+    margin: 0;
+    padding: 5px;
+}
+
+header {
+    min-height: 9vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: blueviolet;
+}
+
+header h1 {
+    font-size: 2.5em;
+    color: #fff;
+}
+
+input {
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 1px;
+    transition: 0.25s all ease;
+    outline: none;
+}
+
+form button {
+    border-radius: 8px;
+    border-style: solid;
+    border-width: 0.5px;
+    background-color: #18acfe;
+    color: #fff;
+    cursor: pointer;
+}
+
+#myTable {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 5vh;
+    border-collapse: collapse;
+}
+
+#myTable th {
+    background-color: blueviolet;
+    padding: 10px;
+    color: #fff;
+    font-weight: 100;
+    border-radius: 3px;
+}
+
+
+#myTable td,th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+
+
+
+#myTable tr:nth-child(even) {
+    background-color: #f2f2f2;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>CRUD</h1>
+    </header>
+
+    <!--    Formulários e botão Enviar  -->
+    <section id="table">
+        <form id="form" autocomplete="off">
+    <input type="text" name="Nome" id="nome" placeholder="Nome" required>
+    <input type="email" name="email" id="email" placeholder="Email" required>
+    <input type="number" name="telefone" id="telefone" placeholder="Telefone" required>
+    <input type="text" name="Profissão" id="profissão" placeholder="Profissão" required>
+    <button id="Enviar">Enviar</button>
+        </form>
+    </section>
+    
+
+ <!--Tabela criada com o DB -->
+
+        <table id="myTable">
+            <tr id="0">
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Telefone</th>
+                <th>Profissão</th>
+                <th>Ação</th>
+            </tr>
+        </table>
+
+</body>
+</html>
