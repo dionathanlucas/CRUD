@@ -31,7 +31,13 @@ const deleteClient = (index) => {
     const dbClient = readClient ()
     dbClient.splice (index, 1)
     setLocalStorage (dbClient)
+    alert ("Deseja realmente apagar os dados?")
+    updateTable ()
 }
+
+
+
+
 
 
 
@@ -50,8 +56,16 @@ const saveClient = () => {
             telefone: document.getElementById ('telefone').value,
             profissão: document.getElementById ('profissão').value
         }
+        const index = document.getElementById ('nome').dataset.index
+        if (index == 'new') {
         createClient (client)
+        updateTable ()
         clearFields ()
+        } else {
+           updateClient (index, client)
+           updateTable ()
+
+        }
     }
 }
 document.getElementById ('Enviar')
@@ -60,16 +74,16 @@ document.getElementById ('Enviar')
 
 // CRIANDO NOVAS LINHAS
 
-const createRow = (client) => {
+const createRow = (client, index) => {
     const newRow = document.createElement ('tr')
     newRow.innerHTML = `
+        <td>${client.id=[index]}</td>
         <td>${client.nome}</td>
         <td>${client.email}</td>
         <td>${client.telefone}</td>
         <td>${client.profissão}</td>
-        <td>${client.ação}
-            <button type="button" class="button green">Editar</button>
-            <button type="button" class="button red">Excluir</button>
+            <button type="button" class="button green" id="edit-${index}">Editar</button>
+            <button type="button" class="button red" id="delete-${index}">Excluir</button>
         </td>
     `
     document.querySelector ('#myTable').appendChild(newRow)
@@ -79,7 +93,7 @@ const createRow = (client) => {
 // LIMPAR LINHAS DA TABELA
 
 const clearTable = () => {
-    const rows = document.querySelectorAll ('#myTable>table tr')
+    const rows = document.querySelectorAll ('#myTable> tr')
     rows.forEach (row => row.parentNode.removeChild (row))
 }
 
@@ -92,4 +106,42 @@ const updateTable = () => {
     dbClient.forEach(createRow)
 }
 
+
+const fillFields = (client) =>{
+    document.getElementById ('nome').value = client.nome
+    document.getElementById ('email').value = client.email
+    document.getElementById ('telefone').value = client.telefone
+    document.getElementById ('profissão').value = client.profissão
+    document.getElementById ('nome').dataset.index = client.index
+}
+
+
+const editClient = (index) => {
+    const client = readClient () [index]
+    client.index = index
+    fillFields(client)
+}
+
+const editDelete = (event) => {
+    if (event.target.type =='button'){
+
+        const [action, index] = event.target.id.split('-')
+
+        if (action =='edit') {
+           editClient (index)
+        } else {
+            deleteClient (index)
+        }
+    }
+}
+
 updateTable()
+
+
+
+//EVENTOS
+document.getElementById ('Enviar')
+    addEventListener ('click', saveClient)
+
+    document.querySelector ('#myTable>table')
+    addEventListener ('click', editDelete)
