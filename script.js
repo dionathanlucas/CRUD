@@ -121,7 +121,7 @@ const editClient = (index) => {
 }
 
 
-// Validando notões Editar e Deletar
+// Validando botões Editar e Deletar
 const editDelete = (event) => {
     if (event.target.type =='button'){
 
