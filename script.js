@@ -31,8 +31,6 @@ const deleteClient = (index) => {
     const dbClient = readClient ()
     dbClient.splice (index, 1)
     setLocalStorage (dbClient)
-    alert ("Deseja realmente apagar os dados?")
-    updateTable ()
 }
 
 
@@ -48,6 +46,7 @@ const isvalidFields = () => {
 
 // Interação com o Layout
 
+
 const saveClient = () => {
     if (isvalidFields()) {
         const client = {
@@ -57,10 +56,9 @@ const saveClient = () => {
             profissão: document.getElementById ('profissão').value
         }
         const index = document.getElementById ('nome').dataset.index
-        if (index == 'new') {
+           if (index == "new" ) {
         createClient (client)
         updateTable ()
-        clearFields ()
         } else {
            updateClient (index, client)
            updateTable ()
@@ -130,7 +128,13 @@ const editDelete = (event) => {
         if (action =='edit') {
            editClient (index)
         } else {
-            deleteClient (index)
+            const client = readClient () [index]
+            const response = confirm (`Deseja realmente excluir os dados de ${client.nome}`)
+            if (response) {
+                deleteClient (index)
+                updateTable()
+            }
+           
         }
     }
 }
