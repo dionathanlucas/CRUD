@@ -56,7 +56,7 @@ const saveClient = () => {
             profissão: document.getElementById ('profissão').value
         }
         const index = document.getElementById ('nome').dataset.index
-           if (index == "new" ) {
+           if (index == "new") {
         createClient (client)
         updateTable ()
         } else {
@@ -120,6 +120,8 @@ const editClient = (index) => {
     fillFields(client)
 }
 
+
+// Validando notões Editar e Deletar
 const editDelete = (event) => {
     if (event.target.type =='button'){
 
