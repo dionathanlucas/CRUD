@@ -7,6 +7,7 @@ const setLocalStorage = (dbClient) => localStorage.setItem("db_client", JSON.str
 
 
 // CREATE
+
 const createClient = (client) => {
     const dbClient = getLocalStorage()
     dbClient.push (client)
@@ -69,8 +70,12 @@ const saveClient = () => {
 document.getElementById ('Enviar')
     .addEventListener ('click', saveClient)
 
+    
 
 // CRIANDO NOVAS LINHAS
+
+
+
 
 const createRow = (client, index) => {
     const newRow = document.createElement ('tr')
@@ -86,6 +91,7 @@ const createRow = (client, index) => {
     `
     document.querySelector ('#myTable').appendChild(newRow)
 }
+
 
 
 // LIMPAR LINHAS DA TABELA
@@ -141,13 +147,18 @@ const editDelete = (event) => {
     }
 }
 
+
+
+
 updateTable()
 
 
 
+    
+
 //EVENTOS
-document.getElementById ('Enviar')
-    addEventListener ('click', saveClient)
+//document.getElementById ('Enviar')
+   // addEventListener ('click', saveClient)
 
     document.querySelector ('#myTable>table')
     addEventListener ('click', editDelete)
